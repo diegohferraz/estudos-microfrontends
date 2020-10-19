@@ -16,6 +16,12 @@ registerApplication({
 });
 
 registerApplication({
+  name: "@dhf/navigation",
+  app: () => System.import("@dhf/navigation"),
+  activeWhen: ["/"],
+});
+
+registerApplication({
   name: "@dhf/routing-example",
   app: () => System.import("@dhf/routing-example"),
   activeWhen: ["/routing"],
