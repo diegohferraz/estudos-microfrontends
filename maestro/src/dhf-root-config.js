@@ -21,6 +21,12 @@ registerApplication({
   activeWhen: ["/routing"],
 });
 
+registerApplication({
+  name: "@dhf/internal-parcel-part",
+  app: () => System.import("@dhf/internal-parcel-part"),
+  activeWhen: location => location.pathname === '/parcel',
+});
+
 start({
   urlRerouteOnly: true,
 });
