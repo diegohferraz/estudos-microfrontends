@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
+import { listenEvent } from "@dhf/utils";
 
 const App = ({ name }) => {
-  const [tasks, updateTasks] = useState([])
+  const [tasks, updateTasks] = useState([]);
 
   useEffect(() => {
-    window.addEventListener('@dhf/internal-parcel-part', event => {
-      updateTasks(tasklist => [
-        ...tasklist,
-        event.detail
-      ])
-    })
-  }, [])
+    listenEvent("@dhf/internal-parcel-part", (event) => {
+      updateTasks((tasklist) => [...tasklist, event.detail]);
+    });
+  }, []);
   return (
     <>
       <h1>{name}</h1>
@@ -22,7 +20,7 @@ const App = ({ name }) => {
           </tr>
         </thead>
         <tbody>
-          {tasks.map(task => (
+          {tasks.map((task) => (
             <tr key={task.id}>
               <td>{task.id}</td>
               <td>{task.describe}</td>
@@ -31,7 +29,7 @@ const App = ({ name }) => {
         </tbody>
       </table>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
