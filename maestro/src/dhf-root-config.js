@@ -22,6 +22,12 @@ registerApplication({
 });
 
 registerApplication({
+  name: "@dhf/lazy",
+  app: () => System.import("@dhf/lazy"),
+  activeWhen: ["/lazy"],
+});
+
+registerApplication({
   name: "@dhf/internal-parcel-part",
   app: () => System.import("@dhf/internal-parcel-part"),
   activeWhen: location => location.pathname === '/parcel',
